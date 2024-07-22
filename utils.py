@@ -21,7 +21,7 @@ def install_dependencies(requirements_file: str) -> bool:
     :return:  bool
     """
     try:
-        subprocess.check_call(['pip', 'install', '-r', requirements_file])
+        subprocess.Popen(['pip', 'install', '-r', requirements_file], shell=True)
         return True
     except subprocess.CalledProcessError:
         return False
@@ -40,7 +40,7 @@ def update_dependencies(requirements_file: str) -> bool:
         upgrade_packages = [pkg.strip() + " --upgrade" for pkg in packages]
 
         for package in upgrade_packages:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+            subprocess.Popen([sys.executable, "-m", "pip", "install", package], shell=True)
 
         return True
     except subprocess.CalledProcessError as e:
