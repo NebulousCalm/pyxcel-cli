@@ -7,12 +7,14 @@ from utils import does_command_exist, update_
 
 def main(
         command: str = "",
+
         update: Annotated[
             bool,
             typer.Argument(
                 help="Updates necessary dependencies for this program"
             )
         ] = False,
+
         nowarn: Annotated[
             bool,
             typer.Argument(

@@ -1,7 +1,7 @@
 import typer
 
 
-def warn(text: str) -> None:
+def warn_(text: str) -> None:
     typer.echo(typer.style(text, fg=typer.colors.YELLOW))
 
 

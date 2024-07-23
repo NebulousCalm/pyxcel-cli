@@ -1,7 +1,33 @@
-import console_progress_bar  # local file
+from console_progress_bar import console_progress_bar  # local file
+import typer
 
 import pandas as pd
 import os
+
+
+def merge_directory(warn: bool) -> str and bool:
+    """
+    Merge all files in a directory into a single file.
+
+    :param warn: Warns potentially.
+    """
+    directory = typer.prompt("Directory to merge")
+    sheet_name = typer.prompt("Sheet name (str or int)")
+    output_file = typer.prompt("Output file (str)")
+    use_same_directory = typer.confirm("Use same directory?")
+    if use_same_directory:
+        output_dir = directory
+    else:
+        output_dir = typer.prompt("Output directory")
+
+    try:
+        all_files, all_dirs = directory_files_to_array(directory)
+        merge_same_sheet_names(sheet_name, all_files, directory, f'{output_file}.xlsx')
+    except Exception as e:
+        if warn:
+            return e, False
+        return None, False
+    return None, True
 
 
 def directory_files_to_array(directory: str, valid_files=None, dir_warning=True, include_dir=False):

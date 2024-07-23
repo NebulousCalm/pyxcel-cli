@@ -48,4 +48,4 @@ def update_dependencies(requirements_file: str) -> bool:
 
 
 def does_command_exist(command: str) -> bool:
-    return os.path.exists('./commands/' + command)
+    return os.path.exists('./commands/' + command + '.py')
