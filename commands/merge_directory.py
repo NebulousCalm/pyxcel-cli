@@ -22,7 +22,7 @@ def merge_directory(warn: bool) -> str and bool:
 
     try:
         all_files, all_dirs = directory_files_to_array(directory)
-        merge_same_sheet_names(sheet_name, all_files, directory, f'{output_file}.xlsx')
+        merge_same_sheet_names(sheet_name, all_files, directory, f'{output_dir}{output_file}.xlsx')
     except Exception as e:
         if warn:
             return e, False
@@ -74,7 +74,7 @@ def merge_same_sheet_names(sheetname: int or str, workbooks, file_dir: str, outp
     """
 
     # Check if auto delete is enabled and delete existing file if present
-    autodelete = False
+    autodelete = False  # modify if auto delete is wanted
     output_path = os.path.join('../', output_file)
     if autodelete and os.path.exists(output_path):
         os.remove(output_path)

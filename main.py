@@ -1,7 +1,5 @@
 import typer
-from typing_extensions import Annotated
 from importlib import import_module
-from pathlib import Path
 
 
 from text_highlighting import warn_, error
